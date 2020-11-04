@@ -25,11 +25,10 @@ public class Department {
 	
 	public Department() {}
 
-	public Department(String name, String description, List<Student> students) {
+	public Department(String name, String description) {
 		super();
 		this.name = name;
 		this.description = description;
-		this.students = students;
 	}
 
 	public long getId() {

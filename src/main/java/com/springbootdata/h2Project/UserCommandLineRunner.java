@@ -27,7 +27,7 @@ public class UserCommandLineRunner implements CommandLineRunner {
 
 		log.info("Department creation");
 		Department department_1;
-		department_1 = departmentService.save(new Department("Math101", "Basics of mathematics", null));
+		department_1 = departmentService.save(new Department("Math101", "Basics of mathematics"));
 
 		log.info("Student creation");
 		studentService.save(new Student("Juan", "Marco", department_1));
