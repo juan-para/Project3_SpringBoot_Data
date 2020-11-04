@@ -32,15 +32,14 @@ public class UserCommandLineRunner implements CommandLineRunner {
 		log.info("Student creation");
 		studentService.save(new Student("Juan", "Marco", department_1));
 
-		
 		log.info("Students:");
 		for (Department department : departmentService.retrieveAllDepartment()) {
 			log.info(department.toString());
-		}		
+		}
 		System.out.println("Departments:");
 		for (Student student : studentService.retrieveAllStudents()) {
 			log.info(student.toString());
 		}
 	}
-	
+
 }
