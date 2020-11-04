@@ -12,6 +12,7 @@ import com.springbootdata.h2Project.repository.DepartmentRepository;
 @Service
 public class DepartmentService {
 
+	@Autowired
 	private DepartmentRepository repository;
 
 	public List<Department> retrieveAllDepartment() {
@@ -22,8 +23,8 @@ public class DepartmentService {
 		return departments;
 	}
 
-	public void save(Department department) {
-		repository.save(department);
+	public Department save(Department department) {
+		return repository.save(department);
 	}
 	
 	

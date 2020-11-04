@@ -21,14 +21,15 @@ public class Department {
 	private String description;
 	
 	@OneToMany(mappedBy = "department")
-	List<Student> students;
+	private List<Student> students;
 	
 	public Department() {}
-	
-	public Department(String name, String description) {
+
+	public Department(String name, String description, List<Student> students) {
 		super();
 		this.name = name;
 		this.description = description;
+		this.students = students;
 	}
 
 	public long getId() {

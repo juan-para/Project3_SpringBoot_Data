@@ -23,10 +23,11 @@ public class Student {
 
 	public Student() {}
 	
-	public Student(String firstName, String lastName) {
+	public Student(String firstName, String lastName, Department department) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.department = department;
 	}
 
 	public long getId() {

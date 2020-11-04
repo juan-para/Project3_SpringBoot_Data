@@ -3,6 +3,7 @@ package com.springbootdata.h2Project.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springbootdata.h2Project.model.Student;
@@ -11,6 +12,7 @@ import com.springbootdata.h2Project.repository.StudentRepository;
 @Service
 public class StudentService {
 
+	@Autowired
 	private StudentRepository repository;
 
 	public List<Student> retrieveAllStudents() {
@@ -21,8 +23,8 @@ public class StudentService {
 		return students;
 	}
 
-	public void save(Student student) {
-		repository.save(student);
+	public Student save(Student student) {
+		return repository.save(student);
 	}
 	
 }

@@ -25,19 +25,22 @@ public class UserCommandLineRunner implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// This method runs as soon as the application is deployed
 
-		System.out.println("Department creation");
-		Department department_1 = new Department("Math101", "Basics of mathematics");
-		departmentService.save(department_1);
+		log.info("Department creation");
+		Department department_1;
+		department_1 = departmentService.save(new Department("Math101", "Basics of mathematics", null));
 
-		System.out.println("Student creation");
-		Student student_1 = new Student("Juan", "Marco");
-		student_1.setDepartment(department_1);
-		studentService.save(student_1);
+		log.info("Student creation");
+		studentService.save(new Student("Juan", "Marco", department_1));
 
+		
+		log.info("Students:");
+		for (Department department : departmentService.retrieveAllDepartment()) {
+			log.info(department.toString());
+		}		
+		System.out.println("Departments:");
 		for (Student student : studentService.retrieveAllStudents()) {
 			log.info(student.toString());
 		}
-
 	}
-
+	
 }
