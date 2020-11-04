@@ -23,6 +23,8 @@ public class Department {
 	@OneToMany(mappedBy = "department")
 	List<Student> students;
 	
+	public Department() {}
+	
 	public Department(String name, String description) {
 		super();
 		this.name = name;
@@ -46,6 +48,12 @@ public class Department {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}	
+	public List<Student> getStudents() {
+		return students;
+	}
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 
 	@Override

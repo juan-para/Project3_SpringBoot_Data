@@ -17,9 +17,11 @@ public class Student {
 	private String firstName;
 	@Column(length = 50)
 	private String lastName;
-	
+
 	@ManyToOne
 	private Department department;
+
+	public Student() {}
 	
 	public Student(String firstName, String lastName) {
 		super();
@@ -44,6 +46,12 @@ public class Student {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	@Override
