@@ -1,45 +1,40 @@
 package com.springbootdata.h2Project;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.springbootdata.h2Project.model.Department;
-import com.springbootdata.h2Project.model.Student;
-import com.springbootdata.h2Project.service.DepartmentService;
-import com.springbootdata.h2Project.service.StudentService;
+import com.springbootdata.h2Project.service.BookService;
+import com.springbootdata.h2Project.service.Book_BookstoreService;
+import com.springbootdata.h2Project.service.BookstoreService;
 
 @Component
 public class UserCommandLineRunner implements CommandLineRunner {
 
-	private static final Logger log = LoggerFactory.getLogger(UserCommandLineRunner.class);
-
+//	oneToOneExample
+//	@Autowired
+//	private StudentService studentService;
+//	@Autowired
+//	private DepartmentService departmentService;
+	
+//	manyToManyExample
 	@Autowired
-	private StudentService studentService;
+	private BookService bookService;
 	@Autowired
-	private DepartmentService departmentService;
-
+	private BookstoreService bookStoreService;
+	@Autowired
+	private Book_BookstoreService book_BookStoreService;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		// This method runs as soon as the application is deployed
 
-		log.info("Department creation");
-		Department department_1;
-		department_1 = departmentService.save(new Department("Math101", "Basics of mathematics"));
+//		OneToOneRelationship oneToOneExample = new OneToOneRelationship();
+//		oneToOneExample.executeOneToOne(studentService, departmentService);
 
-		log.info("Student creation");
-		studentService.save(new Student("Juan", "Marco", department_1));
+		ManyToManyRelationship_WithJoinTable manyToManyExample = new ManyToManyRelationship_WithJoinTable();
+		manyToManyExample.executeManyToMany(bookService, bookStoreService, book_BookStoreService);
 
-		log.info("Students:");
-		for (Department department : departmentService.retrieveAllDepartment()) {
-			log.info(department.toString());
-		}
-		System.out.println("Departments:");
-		for (Student student : studentService.retrieveAllStudents()) {
-			log.info(student.toString());
-		}
 	}
 
 }
